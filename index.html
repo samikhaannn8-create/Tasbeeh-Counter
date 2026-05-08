@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tasbeeh Counter</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 50px;
+        }
+
+        #count {
+            font-size: 50px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        img {
+            width: 150px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tasbeeh Counter 📿</h1>
+
+    <div id="count">0</div>
+
+    <button onclick="increment()">Count</button>
+    <button onclick="reset()">Reset</button>
+
+    <br>
+    <img id="tasbeehImg" src="img1.png" alt="Tasbeeh">
+
+    <!-- Sound file -->
+    <audio id="clickSound" src="click.mp3"></audio>
+
+    <script>
+        let count = 0;
+
+        function increment() {
+            count++;
+            document.getElementById("count").innerText = count;
+
+            // Play sound
+            let sound = document.getElementById("clickSound");
+            sound.currentTime = 0;
+            sound.play();
+
+            // Change image based on count
+            let img = document.getElementById("tasbeehImg");
+
+            if (count < 10) {
+                img.src = "img1.png";
+            } else if (count < 20) {
+                img.src = "img2.png";
+            } else {
+                img.src = "img3.png";
+            }
+        }
+
+        function reset() {
+            count = 0;
+            document.getElementById("count").innerText = count;
+
+            // Reset image
+            document.getElementById("tasbeehImg").src = "img1.png";
+        }
+    </script>
+
+</body>
+</html>
